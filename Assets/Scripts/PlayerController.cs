@@ -14,12 +14,15 @@ public class PlayerController : MonoBehaviour
     private CharacterController characterController;
     private Collider collider;
     private Vector3 currentVelocity = Vector3.zero;
+
+    private IngredientSpawner ingredientSpawner;
     
 
     private void Awake()
     {
         characterController = GetComponent<CharacterController>();
         collider = GetComponent<Collider>();
+        ingredientSpawner = FindObjectOfType<IngredientSpawner>();
     }
 
     private void Update()
@@ -35,6 +38,7 @@ public class PlayerController : MonoBehaviour
     {
         carriedIngredient = ingredient;
         carriedIngredient.HideVisuals();
+        ingredientSpawner.availableIngredients.Remove(ingredient);
     }
 
 
