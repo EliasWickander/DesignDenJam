@@ -53,6 +53,9 @@ public class ConversationScript : MonoBehaviour
 
     private void Update()
     {
+        if (GameManager.Instance.IsPaused)
+            return;
+        
         if (visualObject.activeSelf)
         {
             if (textToWrite.Count > 0)

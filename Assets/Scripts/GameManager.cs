@@ -2,10 +2,14 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
+
+    public PersistentData saveData;
     
     [Header("How much faster in percentage will it go every difficulty increase")]
     public float airBombersSpawnRate = 25;
@@ -14,7 +18,11 @@ public class GameManager : MonoBehaviour
     private AirBomberSpawner airBomberSpawner;
     private Pot pot;
 
-    public GameObject gameovercanvas;
+    public GameObject gameOverPanel;
+    public Text highScoreText;
+    public Text rationServedText;
+    
+    public bool IsPaused { get; set; }
 
 
     private void Awake()
@@ -32,15 +40,21 @@ public class GameManager : MonoBehaviour
 
     public void WinGame()
     {
-        Time.timeScale = 0;
+        IsPaused = true;
         Debug.Log("Won game");
     }
 
     public void LoseGame()
     {
+        IsPaused = true;
         
         Debug.Log("Lost game");
-        gameovercanvas.SetActive(true);
+
+        saveData.CheckIfNewHighScore(pot.RationsServed);
+        
+        rationServedText.text = String.Format("{00:00}", pot.RationsServed);
+        highScoreText.text = String.Format("{00:00}", saveData.highScore);
+        gameOverPanel.SetActive(true);
         
     }
 

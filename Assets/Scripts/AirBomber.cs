@@ -27,6 +27,9 @@ public class AirBomber : MonoBehaviour
 
     private void Update()
     {
+        if (GameManager.Instance.IsPaused)
+            return;
+        
         if (Physics.Raycast(transform.position, Vector3.down, Mathf.Infinity))
         {
             if (bombTimer > 0)
