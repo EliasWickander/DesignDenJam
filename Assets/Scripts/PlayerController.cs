@@ -54,15 +54,29 @@ public class PlayerController : MonoBehaviour
                 new Vector3(collider.bounds.extents.x, collider.bounds.extents.y, pickUpRange), transform.rotation,
                 LayerMask.GetMask("Ingredient"));
 
-            foreach (Collider hit in hits)
+            if (hits.Length > 0)
             {
-                Ingredient ingredient = hit.GetComponentInParent<Ingredient>();
-
-                if (ingredient)
+                Ingredient closestIngredient = hits[0].GetComponentInParent<Ingredient>();
+                float closestDot = Mathf.Infinity;
+            
+                foreach (Collider hit in hits)
                 {
-                    AddToInventory(ingredient);
-                    break;
-                }
+                    Ingredient ingredient = hit.GetComponentInParent<Ingredient>();
+
+                    if (ingredient)
+                    {
+                        Vector3 dirToIngredient = (ingredient.transform.position - transform.position).normalized;
+
+                        if (Vector3.Dot(transform.forward, dirToIngredient) < closestDot)
+                        {
+                            closestDot = Vector3.Dot(transform.forward, dirToIngredient);
+                            closestIngredient = ingredient;
+                        }
+                    }
+                }   
+                
+                closestIngredient.SetAsTaken();
+                AddToInventory(closestIngredient);
             }
         }
     }

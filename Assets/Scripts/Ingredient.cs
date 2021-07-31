@@ -12,25 +12,26 @@ public enum Ingredients
 
 public abstract class Ingredient : MonoBehaviour
 {
+    public GameObject visualObject;
     public Ingredients ingredientType;
     public int healthToGivePot = 10;
-    private MeshRenderer meshRenderer;
 
     public event Action OnDestroyed;
-
-    protected void Awake()
-    {
-        meshRenderer = GetComponentInChildren<MeshRenderer>();
-    }
-
+    public event Action OnTaken; 
+    
     public void HideVisuals()
     {
-        meshRenderer.enabled = false;
+        visualObject.SetActive(false);
     }
 
     public void Destroy()
     {
         OnDestroyed?.Invoke();
         Destroy(gameObject);
+    }
+
+    public void SetAsTaken()
+    {
+        OnTaken?.Invoke();
     }
 }

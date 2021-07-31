@@ -44,6 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45bc4577640c16f4289f258a43e2afd4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  visualObject: {fileID: 1415820184092314636}
   ingredientType: 2
   healthToGivePot: 20
 --- !u!1 &1415820184092314636

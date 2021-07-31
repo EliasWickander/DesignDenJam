@@ -7,9 +7,17 @@ using Random = UnityEngine.Random;
 
 public enum BalanceScore
 {
+    Nothing,
     Good,
     Poor,
     Horrible,
+}
+
+public enum BalanceAmount
+{
+    TooLittle,
+    TooMuch,
+    Balanced,
 }
 
 public class Pot : MonoBehaviour
@@ -35,6 +43,8 @@ public class Pot : MonoBehaviour
     public float rationTimer = 0;
 
     public event Action OnRationsGiven;
+
+    public BalanceScore currentBalanceScore;
     
 
     private void Start()
@@ -95,11 +105,16 @@ public class Pot : MonoBehaviour
         }
         else
         {
-            BalanceScore balanceScore = GetBalanceScore();
+            currentBalanceScore = GetTotalBalanceScore();
             int damage = 0;
             
-            switch (balanceScore)
+            switch (currentBalanceScore)
             {
+                case BalanceScore.Nothing:
+                {
+                    damage = 20;
+                    break;
+                }
                 case BalanceScore.Good:
                 {
                     damage = 10;
@@ -118,15 +133,16 @@ public class Pot : MonoBehaviour
             }
 
             RationsServed++;
-            Debug.Log("Balance was " + balanceScore + ". Took " + damage + " damage");
+            Debug.Log("Balance was " + currentBalanceScore + ". Took " + damage + " damage");
             
+            OnRationsGiven?.Invoke();
             Health = Mathf.Clamp(Health - damage, 0, maxHealth);
             //Give rations
             rationTimer = giveRationsEverySeconds;
         }
     }
 
-    private BalanceScore GetBalanceScore()
+    private BalanceScore GetTotalBalanceScore()
     {
         BalanceScore score = BalanceScore.Good;
         
@@ -154,8 +170,29 @@ public class Pot : MonoBehaviour
         }
 
         if (amountEmptyIngredients == ingredientsInPot.Count)
-            return BalanceScore.Horrible;
+            return BalanceScore.Nothing;
         
         return score;
+    }
+
+    public BalanceAmount GetIngredientBalanceScore(Ingredients type)
+    {
+        float amount = ingredientsInPot[type];
+        
+        foreach (KeyValuePair<Ingredients, int> pair in ingredientsInPot)
+        {
+            int comparedAmount = pair.Value;
+
+            if (comparedAmount > amount)
+            {
+                return BalanceAmount.TooLittle;
+            }
+            else if (comparedAmount < amount)
+            {
+                return BalanceAmount.TooMuch;
+            }
+        }
+
+        return BalanceAmount.Balanced;
     }
 }

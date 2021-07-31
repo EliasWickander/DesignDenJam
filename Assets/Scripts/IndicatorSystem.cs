@@ -21,7 +21,7 @@ public class Indicator
     {
         foreach (Ingredient ingredient in ingredientsInWorld)
         {
-            ingredient.OnDestroyed += () => ingredientsInWorld.Remove(ingredient);
+            ingredient.OnTaken += () => ingredientsInWorld.Remove(ingredient);
         }
     }
     
