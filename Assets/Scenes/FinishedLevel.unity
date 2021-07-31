@@ -325,7 +325,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   airBomberPrefab: {fileID: 7082122358230446504, guid: 4802a788ccf95954bb0a8c31a1c654dd, type: 3}
   groundCollider: {fileID: 1677306491}
-  enableSpawn: 0
+  enableSpawn: 1
   spawnHeight: 15
   spawnEverySeconds: 1
 --- !u!1 &1289199849
