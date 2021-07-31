@@ -19,6 +19,9 @@ public class CameraMovement : MonoBehaviour
 
     private void Update()
     {
+        if (GameManager.Instance.IsPaused)
+            return;
+        
         if (player)
         {
             Vector3 targetPos = player.transform.position + cameraOffset;

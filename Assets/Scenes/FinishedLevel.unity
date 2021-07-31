@@ -550,9 +550,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa5cded5ecfe7b34f8cfe14d4372d8af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  saveData: {fileID: 0}
   airBombersSpawnRate: 25
   potRationsSpeed: 10
-  gameovercanvas: {fileID: 1174912245}
+  gameOverPanel: {fileID: 1174912245}
+  highScoreText: {fileID: 683969442}
+  rationServedText: {fileID: 320388451}
 --- !u!1 &429671430
 GameObject:
   m_ObjectHideFlags: 0
@@ -1670,7 +1673,7 @@ GameObject:
   - component: {fileID: 1174912248}
   - component: {fileID: 1174912247}
   m_Layer: 5
-  m_Name: option panel
+  m_Name: Game Over Panel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2644,7 +2647,7 @@ GameObject:
   - component: {fileID: 1986783010}
   - component: {fileID: 1986783009}
   m_Layer: 5
-  m_Name: rations served (1)
+  m_Name: highscore
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2940,7 +2943,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2470696959822623434, guid: c28f55710bbe3854591476353ac302b3, type: 3}
       propertyPath: decreaseHPEverySeconds
-      value: 0
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c28f55710bbe3854591476353ac302b3, type: 3}

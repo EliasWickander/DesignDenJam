@@ -96,6 +96,9 @@ public class IndicatorSystem : MonoBehaviour
 
     private void Update()
     {
+        if (GameManager.Instance.IsPaused)
+            return;
+        
         foreach (Indicator indicator in indicators)
         {
             indicator.Update();
