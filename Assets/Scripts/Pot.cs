@@ -18,6 +18,8 @@ public class Pot : MonoBehaviour
 
     public Dictionary<Ingredients, int> ingredientsInPot = new Dictionary<Ingredients, int>();
     
+    public int RationsServed { get; set; }
+    
     public float maxHealth = 100;
     public float startHealth = 50;
 
@@ -31,6 +33,7 @@ public class Pot : MonoBehaviour
     
     private float decreaseTimer = 0;
     private float rationTimer = 0;
+    
 
     private void Start()
     {
@@ -108,6 +111,7 @@ public class Pot : MonoBehaviour
                 }
             }
 
+            RationsServed++;
             Debug.Log("Balance was " + balanceScore + ". Took " + damage + " damage");
             Health -= damage;
             //Give rations
