@@ -9,9 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1415820183508716583}
-  - component: {fileID: -6661400768076124329}
+  - component: {fileID: 8693497728571606785}
   m_Layer: 6
-  m_Name: Potato
+  m_Name: GunPowder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -32,7 +32,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &-6661400768076124329
+--- !u!114 &8693497728571606785
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -41,11 +41,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1415820183508716580}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 45bc4577640c16f4289f258a43e2afd4, type: 3}
+  m_Script: {fileID: 11500000, guid: e8b694c5adba1734cb05f46c4d33b338, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ingredientType: 2
-  healthToGivePot: 20
+  ingredientType: 0
+  healthToGivePot: 10
 --- !u!1 &1415820184092314636
 GameObject:
   m_ObjectHideFlags: 0

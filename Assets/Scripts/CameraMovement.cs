@@ -19,9 +19,12 @@ public class CameraMovement : MonoBehaviour
 
     private void Update()
     {
-        Vector3 targetPos = player.transform.position + cameraOffset;
-        Vector3 currentPos = transform.position;
+        if (player)
+        {
+            Vector3 targetPos = player.transform.position + cameraOffset;
+            Vector3 currentPos = transform.position;
         
-        transform.position = Vector3.Lerp(currentPos, targetPos, lerpSpeed * Time.deltaTime);
+            transform.position = Vector3.Lerp(currentPos, targetPos, lerpSpeed * Time.deltaTime);   
+        }
     }
 }

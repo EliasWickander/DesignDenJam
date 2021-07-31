@@ -103,4 +103,10 @@ public class PlayerController : MonoBehaviour
             transform.rotation = Quaternion.Lerp(currentRot, targetRot, turnRate * Time.deltaTime);   
         }
     }
+
+    public void Kill()
+    {
+        GameManager.Instance.LoseGame();
+        Destroy(gameObject);
+    }
 }

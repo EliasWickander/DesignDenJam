@@ -64,7 +64,6 @@ public class Pot : MonoBehaviour
 
     public void HandleHealthDecrease()
     {
-        Debug.Log(Health);
         if (decreaseTimer > 0)
         {
             decreaseTimer -= Time.deltaTime;
@@ -113,7 +112,8 @@ public class Pot : MonoBehaviour
 
             RationsServed++;
             Debug.Log("Balance was " + balanceScore + ". Took " + damage + " damage");
-            Health -= damage;
+            
+            Health = Mathf.Clamp(Health - damage, 0, maxHealth);
             //Give rations
             rationTimer = giveRationsEverySeconds;
         }
@@ -125,19 +125,30 @@ public class Pot : MonoBehaviour
         
         List<Ingredients> ingredientsList = ingredientsInPot.Keys.ToList();
 
-        for (int i = 0; i < ingredientsList.Count - 1; i++)
+        int amountEmptyIngredients = 0;
+        for (int i = 0; i < ingredientsList.Count; i++)
         {
             int amount = ingredientsInPot[ingredientsList[i]];
-            int nextAmount = ingredientsInPot[ingredientsList[i + 1]];
+            
+            if (amount == 0)
+                amountEmptyIngredients++;
 
-            int deltaAmount = Mathf.Abs(nextAmount - amount);
+            if (i != ingredientsList.Count - 1)
+            {
+                int nextAmount = ingredientsInPot[ingredientsList[i + 1]];
 
-            if (deltaAmount >= minDeltaForPoorBalance && deltaAmount < minDeltaForHorribleBalance)
-                return BalanceScore.Poor;
-            else if (deltaAmount >= minDeltaForHorribleBalance)
-                return BalanceScore.Horrible;
+                int deltaAmount = Mathf.Abs(nextAmount - amount);
+
+                if (deltaAmount >= minDeltaForPoorBalance && deltaAmount < minDeltaForHorribleBalance)
+                    return BalanceScore.Poor;
+                else if (deltaAmount >= minDeltaForHorribleBalance)
+                    return BalanceScore.Horrible;   
+            }
         }
 
+        if (amountEmptyIngredients == ingredientsInPot.Count)
+            return BalanceScore.Horrible;
+        
         return score;
     }
 }
