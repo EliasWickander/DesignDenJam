@@ -5,8 +5,9 @@ using UnityEngine;
 
 public enum Ingredients
 {
-    Potato,
     Gunpowder,
+    Bread,
+    Potato,
 }
 
 public abstract class Ingredient : MonoBehaviour
