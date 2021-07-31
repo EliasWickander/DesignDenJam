@@ -1,19 +1,12 @@
 fileFormatVersion: 2
-guid: 9eacffda6d911a34687809e600220aa6
+guid: 724c131e0b613eb4ca7d39c19283af66
 ModelImporter:
   serializedVersion: 20200
-  internalIDToNameTable: []
-  externalObjects:
+  internalIDToNameTable:
   - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Airplane_Mat
-    second: {fileID: 2100000, guid: 9b4f8b25c81434e4e825d83b3867249e, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Propeller_Mat
-    second: {fileID: 2100000, guid: 51d172e7b8b12c9478331cc4941a986c, type: 2}
+      74: 1827226128182048838
+    second: Take 001
+  externalObjects: {}
   materials:
     materialImportMode: 2
     materialName: 0
