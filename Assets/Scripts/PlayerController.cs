@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -16,6 +17,8 @@ public class PlayerController : MonoBehaviour
     private Vector3 currentVelocity = Vector3.zero;
 
     private IngredientSpawner ingredientSpawner;
+
+    public Image carriedItemImage;
 
 
     private void Awake()
@@ -46,6 +49,9 @@ public class PlayerController : MonoBehaviour
         carriedIngredient = ingredient;
         carriedIngredient.HideVisuals();
         ingredientSpawner.availableIngredients.Remove(ingredient);
+        
+        carriedItemImage.color = Color.white;
+        carriedItemImage.sprite = carriedIngredient.ingredientIcon;
     }
 
 
@@ -76,7 +82,7 @@ public class PlayerController : MonoBehaviour
                             closestIngredient = ingredient;
                         }
                     }
-                }   
+                }
                 
                 closestIngredient.SetAsTaken();
                 AddToInventory(closestIngredient);
@@ -100,6 +106,9 @@ public class PlayerController : MonoBehaviour
                 {
                     pot.Cook(carriedIngredient);
                     carriedIngredient = null;
+
+                    carriedItemImage.color = Color.clear;
+                    carriedItemImage.sprite = null;
                     break;
                 }
             }
