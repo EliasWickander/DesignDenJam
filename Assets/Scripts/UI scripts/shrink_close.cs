@@ -24,4 +24,8 @@ public class shrink_close : MonoBehaviour
     {
         gameObject.SetActive(false);
     }
+    public void goactive()
+    {
+        gameObject.SetActive(true);
+    }
 }
