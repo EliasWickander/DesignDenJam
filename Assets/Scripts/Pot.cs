@@ -32,7 +32,9 @@ public class Pot : MonoBehaviour
     public int minDeltaForHorribleBalance = 3;
     
     private float decreaseTimer = 0;
-    public  float rationTimer = 0;
+    public float rationTimer = 0;
+
+    public event Action OnRationsGiven;
     
 
     private void Start()

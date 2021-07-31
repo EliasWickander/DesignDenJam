@@ -35,7 +35,7 @@ public class AirBomber : MonoBehaviour
             }
             else
             {
-                Instantiate(bombPrefab, transform.position, transform.rotation);
+                Instantiate(bombPrefab, transform.position, Quaternion.LookRotation(Vector3.down));
                 bombTimer = 1000;
             }
         }

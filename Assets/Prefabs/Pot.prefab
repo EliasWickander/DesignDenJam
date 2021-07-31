@@ -9,8 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 269641206312506060}
-  m_Layer: 0
-  m_Name: Stove
+  - component: {fileID: 1573832257}
+  m_Layer: 7
+  m_Name: Pot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -31,6 +32,25 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1573832257
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 269641206312506061}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8aae7d8dd8f3d5b4b94607245f0294b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 100
+  startHealth: 50
+  HPToDecrease: 1
+  decreaseHPEverySeconds: 1
+  giveRationsEverySeconds: 2
+  minDeltaForPoorBalance: 1
+  minDeltaForHorribleBalance: 3
 --- !u!1 &269641206783848074
 GameObject:
   m_ObjectHideFlags: 0
@@ -40,7 +60,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 269641206783848069}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Visual
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -74,8 +94,8 @@ GameObject:
   - component: {fileID: 269641207364800262}
   - component: {fileID: 269641207364800263}
   - component: {fileID: 269641207364800260}
-  m_Layer: 0
-  m_Name: Cube
+  m_Layer: 7
+  m_Name: Mesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -88,13 +108,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 269641207364800261}
-  m_LocalRotation: {x: 0.06572165, y: -0, z: -0, w: 0.997838}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 1, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children: []
   m_Father: {fileID: 269641206783848069}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 7.537, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &269641207364800262
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -102,7 +122,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 269641207364800261}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 72713781330414003, guid: 62d9ff5c12ebfeb42a4bcbd7c3b97823, type: 3}
 --- !u!23 &269641207364800263
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -122,7 +142,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: fc5d8038637274d499303e4e837418f5, type: 2}
+  - {fileID: 2100000, guid: 9c1e7e0fffa2c474599970b509bd9122, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -155,5 +175,5 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1, y: 1.1298912, z: 1}
+  m_Center: {x: 0, y: 0.6006751, z: 0}
