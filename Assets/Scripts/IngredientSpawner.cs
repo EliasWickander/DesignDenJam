@@ -21,6 +21,14 @@ public class IngredientSpawner : MonoBehaviour
         SpawnIngredients();
     }
 
+    private void Update()
+    {
+        if (availableIngredients.Count == 0)
+        {
+            SpawnIngredients();
+        }
+    }
+
     public void SpawnIngredients()
     {
         int amountSpawned = 0;
