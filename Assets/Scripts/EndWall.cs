@@ -7,7 +7,7 @@ public class EndWall : MonoBehaviour
 {
     private void OnTriggerEnter(Collider other)
     {
-        Transform topTransform = other.transform.parent;
+        Transform topTransform = other.transform;
 
         while (topTransform.parent)
         {

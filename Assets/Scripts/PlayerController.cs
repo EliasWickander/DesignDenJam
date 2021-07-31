@@ -88,8 +88,8 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.E))
         {
-            Collider[] hits = Physics.OverlapBox(collider.bounds.center,
-                new Vector3(collider.bounds.extents.x, collider.bounds.extents.y, pickUpRange), transform.rotation,
+            Collider[] hits = Physics.OverlapBox(collider.bounds.center + transform.forward * pickUpRange,
+                new Vector3(collider.bounds.extents.x, collider.bounds.extents.y, pickUpRange * 0.5f), transform.rotation,
                 LayerMask.GetMask("Pot"));
 
             foreach (Collider hit in hits)

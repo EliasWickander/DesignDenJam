@@ -2,13 +2,15 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 [RequireComponent(typeof(AudioSource))]
 public class AudioManager : MonoBehaviour
 {
     public static AudioManager Instance { get; private set; }
     
-    public AudioClip music;
+    public AudioClip mainMenuMusic;
+    public AudioClip levelMusic;
 
     private AudioSource audioSource;
 
@@ -33,14 +35,17 @@ public class AudioManager : MonoBehaviour
         }
         
         audioSource = GetComponent<AudioSource>();
-        
+
     }
 
     private void Start()
     {
-        audioSource.clip = music;
+        LevelManager.Instance.OnSceneLoad += OnSceneChange;
+        
+        audioSource.clip = mainMenuMusic;
         nextSound = audioSource.clip;
         audioSource.Play();
+        
     }
 
     private void Update()
@@ -64,6 +69,7 @@ public class AudioManager : MonoBehaviour
                 {
                     transitionOutTimer = 0;
                     audioSource.clip = nextSound;
+                    audioSource.Play();
                 }
             }
             else
@@ -91,8 +97,23 @@ public class AudioManager : MonoBehaviour
 
     public void ChangeSound(AudioClip sound)
     {
+        if (sound == audioSource.clip)
+            return;
+        
         nextSound = sound;
         isTransitioning = true;
         originVolume = audioSource.volume;
+    }
+
+    private void OnSceneChange(string sceneName)
+    {
+        if (sceneName == "Main_Menu")
+        {
+            ChangeSound(mainMenuMusic);
+        }
+        else if (sceneName == "FinishedLevel")
+        {
+            ChangeSound(levelMusic);
+        }
     }
 }
