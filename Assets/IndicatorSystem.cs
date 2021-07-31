@@ -17,10 +17,19 @@ public class Indicator
     [HideInInspector]
     public PlayerController playerRef;
 
+    public void Init()
+    {
+        foreach (Ingredient ingredient in ingredientsInWorld)
+        {
+            ingredient.OnDestroyed += () => ingredientsInWorld.Remove(ingredient);
+        }
+    }
+    
     public void Update()
     {
         if (ingredientsInWorld.Count > 0)
         {
+            image.gameObject.SetActive(true);
             target = GetClosestIngredient();
 
             if (target != null)
@@ -31,9 +40,13 @@ public class Indicator
                 targetToViewportPoint.y = Mathf.Clamp01(targetToViewportPoint.y);
             
                 Vector3 targetToScreenPoint = Camera.main.ViewportToScreenPoint(targetToViewportPoint);
-
-                image.transform.position = targetToScreenPoint;   
+                
+                image.transform.position = targetToScreenPoint;
             }
+        }
+        else
+        {
+            image.gameObject.SetActive(false);
         }
     }
     
@@ -95,6 +108,7 @@ public class IndicatorSystem : MonoBehaviour
         {
             indicator.ingredientsInWorld = ingredientSpawner.GetAvailableIngredientsOfType(indicator.type);
             indicator.playerRef = playerRef;
+            indicator.Init();
         }
     }
 }

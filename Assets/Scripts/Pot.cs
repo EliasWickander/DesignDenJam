@@ -43,7 +43,7 @@ public class Pot : MonoBehaviour
         decreaseTimer = decreaseHPEverySeconds;
         rationTimer = giveRationsEverySeconds;
         
-        for (int i = 0; i < 2; i++)
+        for (int i = 0; i < 3; i++)
         {
             ingredientsInPot.Add((Ingredients)i, 0);
         }
@@ -59,9 +59,14 @@ public class Pot : MonoBehaviour
     {
         Health = Mathf.Clamp(Health + ingredient.healthToGivePot, 0, maxHealth);
         
-        Destroy(ingredient.gameObject);
+        ingredient.Destroy();
 
         ingredientsInPot[ingredient.ingredientType] += 1;
+
+        // foreach (KeyValuePair<Ingredients, int> pair in ingredientsInPot)
+        // {
+        //     Debug.Log(pair.Key + " " + pair.Value);
+        // }
     }
 
     public void HandleHealthDecrease()

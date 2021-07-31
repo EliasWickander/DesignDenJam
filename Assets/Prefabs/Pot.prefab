@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 269641206312506060}
-  - component: {fileID: 1573832257}
+  - component: {fileID: 2470696959822623434}
   m_Layer: 7
   m_Name: Pot
   m_TagString: Untagged
@@ -32,7 +32,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1573832257
+--- !u!114 &2470696959822623434
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -48,9 +48,10 @@ MonoBehaviour:
   startHealth: 50
   HPToDecrease: 1
   decreaseHPEverySeconds: 1
-  giveRationsEverySeconds: 2
+  giveRationsEverySeconds: 5
   minDeltaForPoorBalance: 1
   minDeltaForHorribleBalance: 3
+  rationTimer: 0
 --- !u!1 &269641206783848074
 GameObject:
   m_ObjectHideFlags: 0

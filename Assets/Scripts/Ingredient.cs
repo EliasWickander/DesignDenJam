@@ -16,6 +16,8 @@ public abstract class Ingredient : MonoBehaviour
     public int healthToGivePot = 10;
     private MeshRenderer meshRenderer;
 
+    public event Action OnDestroyed;
+
     protected void Awake()
     {
         meshRenderer = GetComponentInChildren<MeshRenderer>();
@@ -24,5 +26,11 @@ public abstract class Ingredient : MonoBehaviour
     public void HideVisuals()
     {
         meshRenderer.enabled = false;
+    }
+
+    public void Destroy()
+    {
+        OnDestroyed?.Invoke();
+        Destroy(gameObject);
     }
 }
