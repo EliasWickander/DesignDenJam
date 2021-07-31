@@ -550,7 +550,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa5cded5ecfe7b34f8cfe14d4372d8af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  saveData: {fileID: 0}
+  saveData: {fileID: 11400000, guid: 610e79b011efcd74491b1938c2d8da1f, type: 2}
   airBombersSpawnRate: 25
   potRationsSpeed: 10
   gameOverPanel: {fileID: 1174912245}
@@ -2954,6 +2954,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1534871432, guid: 3d51f3007a7a20f4eb9216b30adbe15c, type: 3}
+      propertyPath: pickUpRange
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4476073208422442400, guid: 3d51f3007a7a20f4eb9216b30adbe15c, type: 3}
       propertyPath: m_RootOrder
       value: 10
