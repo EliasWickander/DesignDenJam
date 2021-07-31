@@ -9,7 +9,7 @@ public class AirBomber : MonoBehaviour
     public GameObject bombPrefab;
     public float moveSpeed = 5;
     public float timeUntilBombMin = 1;
-    public float timeUntilBombMax = 7;
+    public float timeUntilBombMax = 4;
     
     private Rigidbody rigidBody;
 

@@ -33,6 +33,8 @@ public class Pot : MonoBehaviour
     
     private float decreaseTimer = 0;
     private float rationTimer = 0;
+
+    public event Action OnRationsGiven;
     
 
     private void Start()
@@ -41,10 +43,7 @@ public class Pot : MonoBehaviour
         decreaseTimer = decreaseHPEverySeconds;
         rationTimer = giveRationsEverySeconds;
         
-        for (int i = 0; i < 2; i++)
-        {
-            ingredientsInPot.Add((Ingredients)i, 0);
-        }
+        ClearPot();
     }
 
     private void Update()
@@ -116,6 +115,9 @@ public class Pot : MonoBehaviour
             Health = Mathf.Clamp(Health - damage, 0, maxHealth);
             //Give rations
             rationTimer = giveRationsEverySeconds;
+            ClearPot();
+            OnRationsGiven?.Invoke();
+            
         }
     }
 
@@ -150,5 +152,14 @@ public class Pot : MonoBehaviour
             return BalanceScore.Horrible;
         
         return score;
+    }
+
+    private void ClearPot()
+    {
+        ingredientsInPot.Clear();
+        for (int i = 0; i < 3; i++)
+        {
+            ingredientsInPot.Add((Ingredients)i, 0);
+        }
     }
 }
