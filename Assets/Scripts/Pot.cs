@@ -32,7 +32,7 @@ public class Pot : MonoBehaviour
     public int minDeltaForHorribleBalance = 3;
     
     private float decreaseTimer = 0;
-    private float rationTimer = 0;
+    public float rationTimer = 0;
 
     public event Action OnRationsGiven;
     
@@ -43,7 +43,10 @@ public class Pot : MonoBehaviour
         decreaseTimer = decreaseHPEverySeconds;
         rationTimer = giveRationsEverySeconds;
         
-        ClearPot();
+        for (int i = 0; i < 2; i++)
+        {
+            ingredientsInPot.Add((Ingredients)i, 0);
+        }
     }
 
     private void Update()
@@ -115,9 +118,6 @@ public class Pot : MonoBehaviour
             Health = Mathf.Clamp(Health - damage, 0, maxHealth);
             //Give rations
             rationTimer = giveRationsEverySeconds;
-            ClearPot();
-            OnRationsGiven?.Invoke();
-            
         }
     }
 
@@ -152,14 +152,5 @@ public class Pot : MonoBehaviour
             return BalanceScore.Horrible;
         
         return score;
-    }
-
-    private void ClearPot()
-    {
-        ingredientsInPot.Clear();
-        for (int i = 0; i < 3; i++)
-        {
-            ingredientsInPot.Add((Ingredients)i, 0);
-        }
     }
 }
