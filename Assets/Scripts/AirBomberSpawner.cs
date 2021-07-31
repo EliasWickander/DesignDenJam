@@ -13,10 +13,28 @@ public class AirBomberSpawner : MonoBehaviour
     public float spawnHeight = 15;
     public float spawnEverySeconds = 1;
 
+    private float spawnTimer = 0;
+    
+
     private void Start()
     {
-        if(enableSpawn)
-            InvokeRepeating("SpawnAirBomber", 0, spawnEverySeconds);
+        spawnTimer = spawnEverySeconds;
+    }
+
+    private void Update()
+    {
+        if (enableSpawn)
+        {
+            if (spawnTimer > 0)
+            {
+                spawnTimer -= Time.deltaTime;
+            }
+            else
+            {
+                SpawnAirBomber();
+                spawnTimer = spawnEverySeconds;
+            }
+        }
     }
 
     private void SpawnAirBomber()
@@ -53,8 +71,7 @@ public class AirBomberSpawner : MonoBehaviour
                 return Vector3.Lerp(upperRightBoundsCorner, lowerRightBoundsCorner, Random.Range(0.0f, 1.0f));
             }
         }
-
-        Debug.Log("Zero");
+        
         return Vector3.zero;
     }
 }
