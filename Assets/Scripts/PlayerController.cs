@@ -34,6 +34,7 @@ public class PlayerController : MonoBehaviour
     public void AddToInventory(Ingredient ingredient)
     {
         carriedIngredient = ingredient;
+        carriedIngredient.HideVisuals();
     }
 
 
