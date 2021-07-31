@@ -238,7 +238,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 85e54e1dcda78e240bfafd737911b4cc, type: 3}
     m_FontSize: 41
     m_FontStyle: 0
     m_BestFit: 0
@@ -359,6 +359,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa5cded5ecfe7b34f8cfe14d4372d8af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  airBombersSpawnRate: 25
+  potRationsSpeed: 10
 --- !u!1 &429671430
 GameObject:
   m_ObjectHideFlags: 0
@@ -1381,7 +1383,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 85e54e1dcda78e240bfafd737911b4cc, type: 3}
     m_FontSize: 49
     m_FontStyle: 0
     m_BestFit: 0
