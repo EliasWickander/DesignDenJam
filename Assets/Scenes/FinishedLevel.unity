@@ -2938,6 +2938,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 2470696959822623434, guid: c28f55710bbe3854591476353ac302b3, type: 3}
+      propertyPath: decreaseHPEverySeconds
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c28f55710bbe3854591476353ac302b3, type: 3}
 --- !u!1001 &4476073209683632680

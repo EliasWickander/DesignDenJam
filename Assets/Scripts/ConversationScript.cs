@@ -152,7 +152,7 @@ public class ConversationScript : MonoBehaviour
                         }
                         case Ingredients.Potato:
                         {
-                            return "It lacks some bite!";
+                            return "It lacks some bite,and olive oil!";
                             break;
                         }
                     }
