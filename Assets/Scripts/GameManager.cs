@@ -14,6 +14,9 @@ public class GameManager : MonoBehaviour
     private AirBomberSpawner airBomberSpawner;
     private Pot pot;
 
+    public GameObject gameovercanvas;
+
+
     private void Awake()
     {
         Instance = this;
@@ -35,8 +38,10 @@ public class GameManager : MonoBehaviour
 
     public void LoseGame()
     {
-        Time.timeScale = 0;
+        
         Debug.Log("Lost game");
+        gameovercanvas.SetActive(true);
+        
     }
 
     public void IncreaseDifficulty()
