@@ -61,8 +61,16 @@ public class Pot : MonoBehaviour
 
     private void Update()
     {
+        if (GameManager.Instance.IsPaused)
+            return;
+        
         HandleHealthDecrease();
         HandleRations();
+        
+        if (Health <= 0)
+        {
+            GameManager.Instance.LoseGame();
+        }
     }
 
     public void Cook(Ingredient ingredient)

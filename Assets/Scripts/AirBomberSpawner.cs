@@ -23,6 +23,9 @@ public class AirBomberSpawner : MonoBehaviour
 
     private void Update()
     {
+        if (GameManager.Instance.IsPaused)
+            return;
+        
         if (enableSpawn)
         {
             if (spawnTimer > 0)
