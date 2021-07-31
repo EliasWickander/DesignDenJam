@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public enum Ingredients
 {
@@ -13,6 +14,8 @@ public enum Ingredients
 public abstract class Ingredient : MonoBehaviour
 {
     public GameObject visualObject;
+    public Sprite ingredientIcon;
+    
     public Ingredients ingredientType;
     public int healthToGivePot = 10;
 
