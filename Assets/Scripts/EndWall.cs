@@ -7,13 +7,16 @@ public class EndWall : MonoBehaviour
 {
     private void OnTriggerEnter(Collider other)
     {
-        Transform topTransform = other.transform;
-
-        while (topTransform.parent)
+        if (other.gameObject.layer == LayerMask.NameToLayer("AirBomber"))
         {
-            topTransform = topTransform.parent;
-        }
+            Transform topTransform = other.transform;
+
+            while (topTransform.parent)
+            {
+                topTransform = topTransform.parent;
+            }
         
-        Destroy(topTransform.gameObject);
+            Destroy(topTransform.gameObject);   
+        }
     }
 }

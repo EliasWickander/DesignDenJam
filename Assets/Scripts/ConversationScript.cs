@@ -17,6 +17,8 @@ public class ConversationScript : MonoBehaviour
     public CommentState whatToCommentOn;
     
     public float timeBetweenCharacters = 0.05f;
+    public float lifeTime = 2;
+    private float lifeTimer = 0;
 
     private Text textObject;
     private Pot pot;
@@ -69,6 +71,18 @@ public class ConversationScript : MonoBehaviour
                     writeTimer = 0;
                     currentText += textToWrite.Dequeue();
                     textObject.text = currentText;
+                }
+            }
+            else
+            {
+                if (lifeTimer < lifeTime)
+                {
+                    lifeTimer += Time.deltaTime;
+                }
+                else
+                {
+                    lifeTimer = 0;
+                    visualObject.SetActive(false);
                 }
             }
         }

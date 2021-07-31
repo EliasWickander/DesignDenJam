@@ -1851,6 +1851,7 @@ MonoBehaviour:
   visualObject: {fileID: 865635993}
   whatToCommentOn: 1
   timeBetweenCharacters: 0.05
+  lifeTime: 2
 --- !u!1 &1036603179
 GameObject:
   m_ObjectHideFlags: 0
@@ -3731,11 +3732,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2470696959822623434, guid: c28f55710bbe3854591476353ac302b3, type: 3}
       propertyPath: giveRationsEverySeconds
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 2470696959822623434, guid: c28f55710bbe3854591476353ac302b3, type: 3}
-      propertyPath: giveRationsEverySeconds
-      value: 5
+      value: 15
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c28f55710bbe3854591476353ac302b3, type: 3}
@@ -3776,7 +3773,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1534871432, guid: 3d51f3007a7a20f4eb9216b30adbe15c, type: 3}
       propertyPath: pickUpRange
-      value: 20
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1534871432, guid: 3d51f3007a7a20f4eb9216b30adbe15c, type: 3}
       propertyPath: carriedItemImage
