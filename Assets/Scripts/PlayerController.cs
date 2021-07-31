@@ -59,8 +59,8 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.E))
         {
-            Collider[] hits = Physics.OverlapBox(collider.bounds.center,
-                new Vector3(collider.bounds.extents.x, collider.bounds.extents.y, pickUpRange), transform.rotation,
+            Collider[] hits = Physics.OverlapBox(collider.bounds.center + transform.forward * pickUpRange * 0.5f,
+                new Vector3(collider.bounds.extents.x, collider.bounds.extents.y, pickUpRange * 0.5f), transform.rotation,
                 LayerMask.GetMask("Ingredient"));
 
             if (hits.Length > 0)
@@ -90,11 +90,16 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    private void OnDrawGizmos()
+    {
+        //Gizmos.DrawCube(collider.bounds.center + transform.forward * pickUpRange * 0.5f, new Vector3(collider.bounds.extents.x, collider.bounds.extents.y, pickUpRange * 0.5f) * 2);
+    }
+
     public void HandleCooking()
     {
         if (Input.GetKeyDown(KeyCode.E))
         {
-            Collider[] hits = Physics.OverlapBox(collider.bounds.center + transform.forward * pickUpRange,
+            Collider[] hits = Physics.OverlapBox(collider.bounds.center + transform.forward * pickUpRange * 0.5f,
                 new Vector3(collider.bounds.extents.x, collider.bounds.extents.y, pickUpRange * 0.5f), transform.rotation,
                 LayerMask.GetMask("Pot"));
 
