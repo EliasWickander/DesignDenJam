@@ -97,25 +97,22 @@ public class PlayerController : MonoBehaviour
 
     public void HandleCooking()
     {
-        if (Input.GetKeyDown(KeyCode.E))
+        Collider[] hits = Physics.OverlapBox(collider.bounds.center + transform.forward * pickUpRange * 0.5f,
+            new Vector3(collider.bounds.extents.x, collider.bounds.extents.y, pickUpRange * 0.5f), transform.rotation,
+            LayerMask.GetMask("Pot"));
+
+        foreach (Collider hit in hits)
         {
-            Collider[] hits = Physics.OverlapBox(collider.bounds.center + transform.forward * pickUpRange * 0.5f,
-                new Vector3(collider.bounds.extents.x, collider.bounds.extents.y, pickUpRange * 0.5f), transform.rotation,
-                LayerMask.GetMask("Pot"));
+            Pot pot = hit.GetComponentInParent<Pot>();
 
-            foreach (Collider hit in hits)
+            if (pot && carriedIngredient)
             {
-                Pot pot = hit.GetComponentInParent<Pot>();
+                pot.Cook(carriedIngredient);
+                carriedIngredient = null;
 
-                if (pot && carriedIngredient)
-                {
-                    pot.Cook(carriedIngredient);
-                    carriedIngredient = null;
-
-                    carriedItemImage.color = Color.clear;
-                    carriedItemImage.sprite = null;
-                    break;
-                }
+                carriedItemImage.color = Color.clear;
+                carriedItemImage.sprite = null;
+                break;
             }
         }
     }
