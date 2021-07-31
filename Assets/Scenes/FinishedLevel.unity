@@ -3478,8 +3478,20 @@ PrefabInstance:
       value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 2470696959822623434, guid: c28f55710bbe3854591476353ac302b3, type: 3}
+      propertyPath: HPToDecrease
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2470696959822623434, guid: c28f55710bbe3854591476353ac302b3, type: 3}
+      propertyPath: currentBalanceScore
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2470696959822623434, guid: c28f55710bbe3854591476353ac302b3, type: 3}
       propertyPath: decreaseHPEverySeconds
-      value: 5
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 2470696959822623434, guid: c28f55710bbe3854591476353ac302b3, type: 3}
+      propertyPath: giveRationsEverySeconds
+      value: 20
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c28f55710bbe3854591476353ac302b3, type: 3}
@@ -3490,9 +3502,37 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 577692005, guid: 3d51f3007a7a20f4eb9216b30adbe15c, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2.4472
+      objectReference: {fileID: 0}
+    - target: {fileID: 577692005, guid: 3d51f3007a7a20f4eb9216b30adbe15c, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2.4472
+      objectReference: {fileID: 0}
+    - target: {fileID: 577692005, guid: 3d51f3007a7a20f4eb9216b30adbe15c, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 2.4472
+      objectReference: {fileID: 0}
+    - target: {fileID: 577692005, guid: 3d51f3007a7a20f4eb9216b30adbe15c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.072
+      objectReference: {fileID: 0}
+    - target: {fileID: 577692005, guid: 3d51f3007a7a20f4eb9216b30adbe15c, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.807
+      objectReference: {fileID: 0}
+    - target: {fileID: 1534871432, guid: 3d51f3007a7a20f4eb9216b30adbe15c, type: 3}
+      propertyPath: turnRate
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 1534871432, guid: 3d51f3007a7a20f4eb9216b30adbe15c, type: 3}
+      propertyPath: moveSpeed
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 1534871432, guid: 3d51f3007a7a20f4eb9216b30adbe15c, type: 3}
       propertyPath: pickUpRange
-      value: 1
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 4476073208422442400, guid: 3d51f3007a7a20f4eb9216b30adbe15c, type: 3}
       propertyPath: m_RootOrder
