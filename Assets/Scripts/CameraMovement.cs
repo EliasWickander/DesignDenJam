@@ -7,6 +7,7 @@ public class CameraMovement : MonoBehaviour
 {
     public Vector3 cameraOffset = new Vector3(0, 15, 0);
     public float lerpSpeed = 5;
+    private Vector3 shakeOffset;
     
     private PlayerController player;
 
@@ -29,5 +30,16 @@ public class CameraMovement : MonoBehaviour
         
             transform.position = Vector3.Lerp(currentPos, targetPos, lerpSpeed * Time.deltaTime);   
         }
+    }
+
+    public void CamShakeOnMainCamBomb()
+    {
+        Debug.Log("Reee");
+        StartCoroutine("ShakingDelays");
+    }
+
+    IEnumerator ShakingDelays ()
+    {
+        yield return null;
     }
 }
