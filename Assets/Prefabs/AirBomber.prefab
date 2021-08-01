@@ -48,7 +48,7 @@ MonoBehaviour:
   bombPrefab: {fileID: 5010539277162533734, guid: 81b05482add54e0418c9e4e275a35645, type: 3}
   moveSpeed: 15
   timeUntilBombMin: 1
-  timeUntilBombMax: 3
+  timeUntilBombMax: 15
 --- !u!54 &-6934348662535298555
 Rigidbody:
   m_ObjectHideFlags: 0
