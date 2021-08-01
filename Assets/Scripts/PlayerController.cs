@@ -88,7 +88,7 @@ public class PlayerController : MonoBehaviour
                         }
                     }
                 }
-                
+
                 closestIngredient.SetAsTaken();
                 AddToInventory(closestIngredient);
             }

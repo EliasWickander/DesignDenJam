@@ -25,6 +25,7 @@ public class Pot : MonoBehaviour
     public float Health { get; set; }
 
     public Dictionary<Ingredients, int> ingredientsInPot = new Dictionary<Ingredients, int>();
+    public Dictionary<Ingredients, int> ingredientsRationsLeftUntilExpire = new Dictionary<Ingredients, int>();
 
     public AudioClip putInPotSound;
     public AudioClip rationSound;
@@ -64,7 +65,8 @@ public class Pot : MonoBehaviour
 
         for (int i = 0; i < 3; i++)
         {
-            ingredientsInPot.Add((Ingredients)i, Random.Range(0, 2));
+            ingredientsInPot.Add((Ingredients)i, Random.Range(1, 2));
+            ingredientsRationsLeftUntilExpire.Add((Ingredients)i, 2);
         }
     }
 
@@ -89,6 +91,7 @@ public class Pot : MonoBehaviour
         ingredient.Destroy();
 
         ingredientsInPot[ingredient.ingredientType] += 1;
+        ingredientsRationsLeftUntilExpire[ingredient.ingredientType] = 2;
 
         audioSource.clip = putInPotSound;
         audioSource.Play();
@@ -154,8 +157,21 @@ public class Pot : MonoBehaviour
 
             audioSource.clip = rationSound;
             audioSource.Play();
+
+            List<Ingredients> ingredientsList = ingredientsInPot.Keys.ToList();
             
+            foreach (Ingredients ingredient in ingredientsList)
+            {
+                ingredientsRationsLeftUntilExpire[ingredient]--;
+
+                if (ingredientsRationsLeftUntilExpire[ingredient] <= 0)
+                {
+                    ingredientsInPot[ingredient] = 0;
+                }
+            }
+
             RationsServed++;
+
             Debug.Log("Balance was " + currentBalanceScore + ". Took " + damage + " damage");
             
             OnRationsGiven?.Invoke();
