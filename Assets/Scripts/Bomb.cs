@@ -54,14 +54,14 @@ public class Bomb : MonoBehaviour
     {
         ExplosionVFX();
 
-          if ((GameObject.FindGameObjectWithTag("Player").transform.position.magnitude - this.transform.position.magnitude) >= 100)
-                camMov.CamShakeOnMainCamBomb(); 
+     
 
-      /*  if (playerChar == null)
+       if (playerChar != null)
         {
-            Debug.Log("Player found, no null");
-        }*/
-    
+             if ((playerChar.transform.position - this.transform.position).magnitude < 15)
+                camMov.CamShakeOnMainCamBomb();
+        }
+
 
         Collider[] hits = Physics.OverlapSphere(transform.position, explosionRadius, LayerMask.GetMask("Player"));
 
