@@ -35,7 +35,6 @@ public class Pot : MonoBehaviour
     public float startHealth = 50;
 
     public float HPToDecrease = 1;
-    public float decreaseHPEverySeconds = 1;
 
     public float giveRationsEverySeconds = 15;
 
@@ -66,12 +65,11 @@ public class Pot : MonoBehaviour
     private void Start()
     {
         Health = startHealth;
-        decreaseTimer = decreaseHPEverySeconds;
         rationTimer = giveRationsEverySeconds;
 
         for (int i = 0; i < 3; i++)
         {
-            ingredientsInPot.Add((Ingredients)i, Random.Range(1, 2));
+            ingredientsInPot.Add((Ingredients)i, 1);
             ingredientsRationsLeftUntilExpire.Add((Ingredients)i, amountRationsBeforeIngredientsConsumed);
         }
     }
@@ -81,7 +79,6 @@ public class Pot : MonoBehaviour
         if (GameManager.Instance.IsPaused)
             return;
         
-        HandleHealthDecrease();
         HandleRations();
         
         if (Health <= 0)
@@ -106,24 +103,6 @@ public class Pot : MonoBehaviour
         // {
         //     Debug.Log(pair.Key + " " + pair.Value);
         // }
-    }
-
-    public void HandleHealthDecrease()
-    {
-        if (decreaseTimer > 0)
-        {
-            decreaseTimer -= Time.deltaTime;
-        }
-        else
-        {
-            Health = Mathf.Clamp(Health - HPToDecrease, 0, maxHealth);
-            decreaseTimer = decreaseHPEverySeconds;
-            
-            if (Health <= 0)
-            {
-                //Lose
-            }
-        }
     }
 
     public void HandleRations()
@@ -240,6 +219,28 @@ public class Pot : MonoBehaviour
 
         return BalanceAmount.Balanced;
     }
-    
+
+    //Get how many ingredients are needed of each type for a balance
+    public Dictionary<Ingredients, int> GetNecessaryIngredientAmount()
+    {
+        Dictionary<Ingredients, int> ingredientsAmountUntilBalanced = new Dictionary<Ingredients, int>();
+        
+        int highestAmount = 0;
+        
+        List<Ingredients> ingredientsList = ingredientsInPot.Keys.ToList();
+
+        foreach (Ingredients ingredient in ingredientsList)
+        {
+            if (ingredientsInPot[ingredient] > highestAmount)
+                highestAmount = ingredientsInPot[ingredient];
+        }
+
+        foreach (Ingredients ingredient in ingredientsList)
+        {
+            ingredientsAmountUntilBalanced[ingredient] = highestAmount - ingredientsInPot[ingredient];
+        }
+        
+        return ingredientsAmountUntilBalanced;
+    }
     
 }

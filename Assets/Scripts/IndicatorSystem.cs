@@ -36,11 +36,11 @@ public class Indicator
             {
                 Vector3 targetToViewportPoint = Camera.main.WorldToViewportPoint(target.position);
 
-                targetToViewportPoint.x = Mathf.Clamp01(targetToViewportPoint.x);
-                targetToViewportPoint.y = Mathf.Clamp01(targetToViewportPoint.y);
-            
-                Vector3 targetToScreenPoint = Camera.main.ViewportToScreenPoint(targetToViewportPoint);
+                targetToViewportPoint.x = Mathf.Clamp(targetToViewportPoint.x, 0, 1);
+                targetToViewportPoint.y = Mathf.Clamp(targetToViewportPoint.y, 0, 1);
                 
+                Vector3 targetToScreenPoint = Camera.main.ViewportToScreenPoint(targetToViewportPoint);
+
                 image.transform.position = targetToScreenPoint;
             }
         }
