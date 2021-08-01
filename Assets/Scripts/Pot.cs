@@ -45,11 +45,14 @@ public class Pot : MonoBehaviour
     public int amountRationsBeforeIngredientsConsumed = 2;
     
     private float decreaseTimer = 0;
+    
+    [HideInInspector]
     public float rationTimer = 0;
 
 
     public event Action OnRationsGiven;
 
+    [HideInInspector]
     public BalanceScore currentBalanceScore;
 
     private AudioSource audioSource;
