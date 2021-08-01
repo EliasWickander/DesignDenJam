@@ -16,7 +16,9 @@ public class Hud: MonoBehaviour
     void Start()
     {
         Potinstance = FindObjectOfType<Pot>();
-        Rationslider.maxValue = Potinstance.giveRationsEverySeconds;
+        setuptimerslider();
+        Potinstance.OnRationsGiven += setuptimerslider;
+  
        
     }
 
@@ -27,5 +29,9 @@ public class Hud: MonoBehaviour
         Rationslider.value = Potinstance.rationTimer;
         ratioquantity.text = Potinstance.RationsServed.ToString();
 
+    }
+    public void setuptimerslider()
+    {
+        Rationslider.maxValue = Potinstance.giveRationsEverySeconds;
     }
 }
