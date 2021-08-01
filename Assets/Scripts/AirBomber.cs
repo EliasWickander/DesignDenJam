@@ -46,6 +46,9 @@ public class AirBomber : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (GameManager.Instance.IsPaused)
+            return;
+        
         rigidBody.MovePosition(transform.position + transform.forward * moveSpeed * Time.deltaTime);
     }
 }
