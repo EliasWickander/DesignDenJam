@@ -8,11 +8,16 @@ public class Hud: MonoBehaviour
     public Pot Potinstance;
     public Text POTHP,ratioquantity;
     public Slider Rationslider;
+
+
+    //AUdiothinghies
+   
     // Start is called before the first frame update
     void Start()
     {
         Potinstance = FindObjectOfType<Pot>();
         Rationslider.maxValue = Potinstance.giveRationsEverySeconds;
+       
     }
 
     // Update is called once per frame

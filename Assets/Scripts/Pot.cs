@@ -61,6 +61,7 @@ public class Pot : MonoBehaviour
         Health = startHealth;
         decreaseTimer = decreaseHPEverySeconds;
         rationTimer = giveRationsEverySeconds;
+        au = GetComponent<AudioSource>();
         
         for (int i = 0; i < 3; i++)
         {
@@ -159,6 +160,7 @@ public class Pot : MonoBehaviour
             Debug.Log("Balance was " + currentBalanceScore + ". Took " + damage + " damage");
             
             OnRationsGiven?.Invoke();
+            drinkinsoup();
             Health = Mathf.Clamp(Health - damage, 0, maxHealth);
             //Give rations
             rationTimer = giveRationsEverySeconds;
