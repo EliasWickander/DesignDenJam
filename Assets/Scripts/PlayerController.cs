@@ -71,7 +71,7 @@ public class PlayerController : MonoBehaviour
             if (hits.Length > 0)
             {
                 Ingredient closestIngredient = hits[0].GetComponentInParent<Ingredient>();
-                float closestDot = Mathf.Infinity;
+                float closestDist = Mathf.Infinity;
             
                 foreach (Collider hit in hits)
                 {
@@ -79,16 +79,16 @@ public class PlayerController : MonoBehaviour
 
                     if (ingredient)
                     {
-                        Vector3 dirToIngredient = (ingredient.transform.position - transform.position).normalized;
+                        float distToIngredient = (ingredient.transform.position - transform.position).magnitude;
 
-                        if (Vector3.Dot(transform.forward, dirToIngredient) < closestDot)
+                        if (distToIngredient < closestDist)
                         {
-                            closestDot = Vector3.Dot(transform.forward, dirToIngredient);
+                            closestDist = distToIngredient;
                             closestIngredient = ingredient;
                         }
                     }
                 }
-                
+
                 closestIngredient.SetAsTaken();
                 AddToInventory(closestIngredient);
             }
