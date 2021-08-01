@@ -37,7 +37,6 @@ public class CameraMovement : MonoBehaviour
 
     public void CamShakeOnMainCamBomb()
     {
-        Debug.Log("Reee");
         StartCoroutine("ShakingDelays");
     }
 
