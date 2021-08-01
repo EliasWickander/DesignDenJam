@@ -7,6 +7,7 @@ public class Bomb : MonoBehaviour
 {
     public float explosionRadius = 5;
     private MeshRenderer meshRenderer;
+    public GameObject explosionPrefab;
 
     private bool exploding = false;
     private float explodeTimer = 0;
@@ -35,6 +36,7 @@ public class Bomb : MonoBehaviour
 
     private void OnCollisionEnter(Collision other)
     {
+        ExplosionVFX();
         Collider[] hits = Physics.OverlapSphere(transform.position, explosionRadius, LayerMask.GetMask("Player"));
 
         exploding = true;
@@ -55,5 +57,10 @@ public class Bomb : MonoBehaviour
             Gizmos.color = Color.red;
             Gizmos.DrawWireSphere(transform.position, explosionRadius);
         }
+    }
+
+    private void ExplosionVFX()
+    {
+        Instantiate(explosionPrefab,new Vector3 (transform.position.x, transform.position.y+2f, transform.position.z), transform.rotation);
     }
 }
