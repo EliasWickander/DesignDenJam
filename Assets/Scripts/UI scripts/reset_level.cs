@@ -16,7 +16,7 @@ public class reset_level : MonoBehaviour
     {
         
     }
-    public void resetòevel()
+    public void resetÃ²evel()
     {
         SceneManager.LoadScene(1);
     }

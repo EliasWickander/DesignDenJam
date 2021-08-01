@@ -18,6 +18,7 @@ public class GameManager : MonoBehaviour
     private AirBomberSpawner airBomberSpawner;
     private Pot pot;
 
+    public KeyCode keyToPause = KeyCode.K;
     public GameObject gameOverPanel;
     public GameObject optionsPanel;
     
@@ -41,16 +42,25 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(keyToPause))
         {
-            SetOptionsMenuEnabled(true);
+            SetOptionsMenuEnabled(!optionsPanel.activeSelf);
         }
     }
 
     public void SetOptionsMenuEnabled(bool enabled)
     {
         IsPaused = enabled;
-        optionsPanel.SetActive(enabled);
+        //optionsPanel.SetActive(enabled);
+
+        if (enabled)
+        {
+            optionsPanel.SetActive(true);
+        }
+        else
+        {
+            optionsPanel.GetComponent<shrink_close>().animnowclose();
+        }
     }
     public void WinGame()
     {

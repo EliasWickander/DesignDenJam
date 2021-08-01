@@ -8,28 +8,19 @@ public class LevelManager : MonoBehaviour
 {
     public static LevelManager Instance { get; private set; }
     
-   public string namescene;
    public GameObject menuoptioncanvas;
 
    public event Action<string> OnSceneLoad;
 
    private void Awake()
    {
-       if (Instance != null)
-       {
-           Destroy(this);
-       }
-       else
-       {
-           DontDestroyOnLoad(this);
-           Instance = this;
-       }
+       Instance = this;
    }
 
-   public void loadthatgame()
+   public void LoadScene(string sceneName)
     {
-        OnSceneLoad?.Invoke(namescene);
-        SceneManager.LoadScene(namescene);
+        OnSceneLoad?.Invoke(sceneName);
+        SceneManager.LoadScene(sceneName);
     }
     public void Quit()
     {
