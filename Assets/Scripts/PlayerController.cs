@@ -24,6 +24,9 @@ public class PlayerController : MonoBehaviour
     private AudioSource audioSource;
     public Animator WalkingAnimator;
 
+    [SerializeField] GameObject par;
+    GameObject instancevfx;
+    int count = 0;
 
     private void Awake()
     {
@@ -71,10 +74,12 @@ public class PlayerController : MonoBehaviour
        if (characterController.velocity.magnitude <=1.5f)
         {
             WalkingAnimator.SetBool("IsWalking", false);
+            
         }
         else
         {
             WalkingAnimator.SetBool("IsWalking", true);
+            StartCoroutine(VFXimplement());
         }
     }
 
@@ -166,5 +171,21 @@ public class PlayerController : MonoBehaviour
     {
         GameManager.Instance.LoseGame();
         Destroy(gameObject);
+    }
+    
+    IEnumerator VFXimplement()
+    {
+        
+        if(count<=1)
+        {
+            
+            instancevfx = Instantiate(par, transform.position,Quaternion.identity);
+            count++;
+            yield return new WaitForSeconds(0.4f);
+            Destroy(instancevfx);
+            count--;
+        }
+        
+    
     }
 }
