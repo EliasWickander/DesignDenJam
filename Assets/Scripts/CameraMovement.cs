@@ -22,13 +22,16 @@ public class CameraMovement : MonoBehaviour
     {
         if (GameManager.Instance.IsPaused)
             return;
+     /*   if (Input.GetKeyDown("e"))
+            CamShakeOnMainCamBomb(); */
         
         if (player)
         {
             Vector3 targetPos = player.transform.position + cameraOffset;
             Vector3 currentPos = transform.position;
         
-            transform.position = Vector3.Lerp(currentPos, targetPos, lerpSpeed * Time.deltaTime);   
+            transform.position = Vector3.Lerp(currentPos, targetPos, lerpSpeed * Time.deltaTime);
+            transform.position += shakeOffset;
         }
     }
 
@@ -40,6 +43,14 @@ public class CameraMovement : MonoBehaviour
 
     IEnumerator ShakingDelays ()
     {
-        yield return null;
+        shakeOffset = new Vector3(0.05f,0, -0.02f);
+
+        yield return new WaitForSeconds(0.1f);
+
+        shakeOffset = new Vector3(-0.05f, 0, 0.02f);
+
+        yield return new WaitForSeconds(0.1f);
+
+        shakeOffset = new Vector3(0, 0, 0);
     }
 }
