@@ -187,14 +187,12 @@ public class ConversationScript : MonoBehaviour
                         case Ingredients.Gunpowder:
                         {
                             PlayRandomGrunt();
-                            return "The food doesn't pack much of a punch...";
-                            break;
+                            return "Not explosive enough!";
                         }
                         case Ingredients.Potato:
                         {
                             PlayRandomGrunt();
-                            return "It lacks some bite,and olive oil!";
-                            break;
+                            return "It lacks some bite,and olive oil!"; 
                         }
                     }
 
