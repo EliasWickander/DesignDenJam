@@ -25,6 +25,7 @@ public class Pot : MonoBehaviour
     public float Health { get; set; }
 
     public Dictionary<Ingredients, int> ingredientsInPot = new Dictionary<Ingredients, int>();
+    public Dictionary<Ingredients, int> ingredientsRationsLeftUntilExpire = new Dictionary<Ingredients, int>();
 
     public AudioClip putInPotSound;
     public AudioClip rationSound;
@@ -36,13 +37,16 @@ public class Pot : MonoBehaviour
     public float HPToDecrease = 1;
     public float decreaseHPEverySeconds = 1;
 
-    public float giveRationsEverySeconds = 5;
+    public float giveRationsEverySeconds = 15;
 
     public int minDeltaForPoorBalance = 1;
     public int minDeltaForHorribleBalance = 3;
+
+    public int amountRationsBeforeIngredientsConsumed = 2;
     
     private float decreaseTimer = 0;
     public float rationTimer = 0;
+
 
     public event Action OnRationsGiven;
 
@@ -64,7 +68,8 @@ public class Pot : MonoBehaviour
 
         for (int i = 0; i < 3; i++)
         {
-            ingredientsInPot.Add((Ingredients)i, Random.Range(0, 2));
+            ingredientsInPot.Add((Ingredients)i, Random.Range(1, 2));
+            ingredientsRationsLeftUntilExpire.Add((Ingredients)i, amountRationsBeforeIngredientsConsumed);
         }
     }
 
@@ -89,6 +94,7 @@ public class Pot : MonoBehaviour
         ingredient.Destroy();
 
         ingredientsInPot[ingredient.ingredientType] += 1;
+        ingredientsRationsLeftUntilExpire[ingredient.ingredientType] = amountRationsBeforeIngredientsConsumed;
 
         audioSource.clip = putInPotSound;
         audioSource.Play();
@@ -154,8 +160,21 @@ public class Pot : MonoBehaviour
 
             audioSource.clip = rationSound;
             audioSource.Play();
+
+            List<Ingredients> ingredientsList = ingredientsInPot.Keys.ToList();
             
+            foreach (Ingredients ingredient in ingredientsList)
+            {
+                ingredientsRationsLeftUntilExpire[ingredient]--;
+
+                if (ingredientsRationsLeftUntilExpire[ingredient] <= 0)
+                {
+                    ingredientsInPot[ingredient] = 0;
+                }
+            }
+
             RationsServed++;
+
             Debug.Log("Balance was " + currentBalanceScore + ". Took " + damage + " damage");
             
             OnRationsGiven?.Invoke();
