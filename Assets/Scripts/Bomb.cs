@@ -17,13 +17,14 @@ public class Bomb : MonoBehaviour
 
     private AudioSource audioSource;
     private CameraMovement camMov;
+    private GameObject playerChar;
 
     private void Awake()
     {
         meshRenderer = GetComponentInChildren<MeshRenderer>();
         audioSource = GetComponent<AudioSource>();
         camMov = Camera.main.GetComponent<CameraMovement>();
-     
+        playerChar = GameObject.FindGameObjectWithTag("Player");
     }
 
     private void Start()
@@ -52,13 +53,15 @@ public class Bomb : MonoBehaviour
     private void OnCollisionEnter(Collision other)
     {
         ExplosionVFX();
-        
-        if (GameObject.FindGameObjectWithTag("Player"))
+
+     
+
+       if (playerChar != null)
         {
-            if ((GameObject.FindGameObjectWithTag("Player").transform.position.magnitude - this.transform.position.magnitude) >= 10f)
+             if ((playerChar.transform.position - this.transform.position).magnitude < 15)
                 camMov.CamShakeOnMainCamBomb();
         }
-    
+
 
         Collider[] hits = Physics.OverlapSphere(transform.position, explosionRadius, LayerMask.GetMask("Player"));
 
