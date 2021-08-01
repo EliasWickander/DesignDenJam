@@ -625,6 +625,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   saveData: {fileID: 11400000, guid: 610e79b011efcd74491b1938c2d8da1f, type: 2}
+  rationAmountBeforeDifficultyIncrease: 2
   airBombersSpawnRate: 25
   potRationsSpeed: 10
   keyToPause: 107
@@ -946,7 +947,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 976385347345107841, guid: 1c7f860c2e5b3034da1dbf54ba42999f, type: 3}
       propertyPath: m_RootOrder
-      value: 14
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 976385347345107841, guid: 1c7f860c2e5b3034da1dbf54ba42999f, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2786,7 +2787,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 69.277, y: -197.002, z: -181.255}
 --- !u!1 &1394821943
 GameObject:
@@ -3554,7 +3555,7 @@ Transform:
   m_LocalScale: {x: 50.411, y: 1, z: 51.474}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1744175667
 GameObject:
@@ -3798,7 +3799,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1925418086
 GameObject:
@@ -4157,7 +4158,7 @@ Transform:
   - {fileID: 458241164}
   - {fileID: 407458040}
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2123603182
 GameObject:
@@ -4198,7 +4199,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 269641206312506060, guid: c28f55710bbe3854591476353ac302b3, type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 269641206312506060, guid: c28f55710bbe3854591476353ac302b3, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4256,6 +4257,10 @@ PrefabInstance:
       propertyPath: giveRationsEverySeconds
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 2470696959822623434, guid: c28f55710bbe3854591476353ac302b3, type: 3}
+      propertyPath: amountRationsBeforeIngredientsConsumed
+      value: 15
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c28f55710bbe3854591476353ac302b3, type: 3}
 --- !u!1001 &4476073209683632680
@@ -4271,7 +4276,7 @@ PrefabInstance:
       objectReference: {fileID: 896081596}
     - target: {fileID: 4476073208422442400, guid: 3d51f3007a7a20f4eb9216b30adbe15c, type: 3}
       propertyPath: m_RootOrder
-      value: 11
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4476073208422442400, guid: 3d51f3007a7a20f4eb9216b30adbe15c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4700,7 +4705,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8674544908920529209, guid: 8b68632b67a28a04e919c48ddfd14af0, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8674544908920529209, guid: 8b68632b67a28a04e919c48ddfd14af0, type: 3}
       propertyPath: m_LocalPosition.x
