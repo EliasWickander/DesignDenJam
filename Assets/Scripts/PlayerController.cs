@@ -77,7 +77,7 @@ public class PlayerController : MonoBehaviour
         else
         {
             WalkingAnimator.SetBool("IsWalking", true);
-            Instantiate(par);
+            //fuck you
         }
     }
 
