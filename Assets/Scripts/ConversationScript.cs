@@ -20,6 +20,9 @@ public class ConversationScript : MonoBehaviour
     public GameObject visualObject;
 
     public CommentState whatToCommentOn;
+
+    public Image iconImage;
+    public List<Sprite> soldierIcons = new List<Sprite>();
     
     public float timeBetweenCharacters = 0.05f;
     public float lifeTime = 2;
@@ -98,6 +101,7 @@ public class ConversationScript : MonoBehaviour
 
     private void CommentOnOverallFood()
     {
+        AddFaceToBox();
         textObject.text = "";
         visualObject.SetActive(true);
 
@@ -145,6 +149,7 @@ public class ConversationScript : MonoBehaviour
 
     private void GiveHintComments()
     {
+        AddFaceToBox();
         textObject.text = "";
         visualObject.SetActive(true);
 
@@ -246,5 +251,10 @@ public class ConversationScript : MonoBehaviour
     {
         audioSource.clip = badFoodGrunts[Random.Range(0, badFoodGrunts.Count)];
         audioSource.Play();
+    }
+
+    private void AddFaceToBox()
+    {
+        iconImage.sprite = soldierIcons[Random.Range(0, soldierIcons.Count)];
     }
 }
