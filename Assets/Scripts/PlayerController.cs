@@ -23,6 +23,7 @@ public class PlayerController : MonoBehaviour
 
     private AudioSource audioSource;
     public Animator WalkingAnimator;
+  
 
 
     private void Awake()

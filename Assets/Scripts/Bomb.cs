@@ -16,11 +16,14 @@ public class Bomb : MonoBehaviour
     private float explodeTimer = 0;
 
     private AudioSource audioSource;
+    private CameraMovement camMov;
 
     private void Awake()
     {
         meshRenderer = GetComponentInChildren<MeshRenderer>();
         audioSource = GetComponent<AudioSource>();
+        camMov = Camera.main.GetComponent<CameraMovement>();
+     
     }
 
     private void Start()
@@ -49,6 +52,14 @@ public class Bomb : MonoBehaviour
     private void OnCollisionEnter(Collision other)
     {
         ExplosionVFX();
+        
+        if (GameObject.FindGameObjectWithTag("Player"))
+        {
+            if ((GameObject.FindGameObjectWithTag("Player").transform.position.magnitude - this.transform.position.magnitude) >= 10f)
+                camMov.CamShakeOnMainCamBomb();
+        }
+    
+
         Collider[] hits = Physics.OverlapSphere(transform.position, explosionRadius, LayerMask.GetMask("Player"));
 
         exploding = true;
@@ -78,4 +89,5 @@ public class Bomb : MonoBehaviour
     {
         Instantiate(explosionPrefab,new Vector3 (transform.position.x, transform.position.y+2f, transform.position.z), transform.rotation);
     }
+
 }
