@@ -3017,6 +3017,11 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!4 &1246127868 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 9063996685544020257, guid: b67809d941347cb41876da7a6408f585, type: 3}
+  m_PrefabInstance: {fileID: 1416675089}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1289199849
 GameObject:
   m_ObjectHideFlags: 0
@@ -5137,6 +5142,14 @@ PrefabInstance:
       propertyPath: carriedItemImage
       value: 
       objectReference: {fileID: 896081596}
+    - target: {fileID: 2138898856158107162, guid: 3d51f3007a7a20f4eb9216b30adbe15c, type: 3}
+      propertyPath: CollisionModule.enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2138898856158107162, guid: 3d51f3007a7a20f4eb9216b30adbe15c, type: 3}
+      propertyPath: CollisionModule.m_Planes.Array.data[0]
+      value: 
+      objectReference: {fileID: 1246127868}
     - target: {fileID: 4476073208422442400, guid: 3d51f3007a7a20f4eb9216b30adbe15c, type: 3}
       propertyPath: m_RootOrder
       value: 10

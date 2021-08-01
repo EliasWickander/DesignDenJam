@@ -23,8 +23,8 @@ public class PlayerController : MonoBehaviour
 
     private AudioSource audioSource;
     public Animator WalkingAnimator;
-  
 
+    [SerializeField] GameObject par;
 
     private void Awake()
     {
@@ -72,10 +72,12 @@ public class PlayerController : MonoBehaviour
        if (characterController.velocity.magnitude <=1.5f)
         {
             WalkingAnimator.SetBool("IsWalking", false);
+            
         }
         else
         {
             WalkingAnimator.SetBool("IsWalking", true);
+            Instantiate(par);
         }
     }
 

@@ -249,6 +249,7 @@ MonoBehaviour:
   pickUpRadius: 2
   carriedItemImage: {fileID: 0}
   WalkingAnimator: {fileID: 5847046030167707946}
+  par: {fileID: 8944553722111320876, guid: 1aa40931ee52aa64699225227f3e88f6, type: 3}
 --- !u!82 &-6770624743737344082
 AudioSource:
   m_ObjectHideFlags: 0
