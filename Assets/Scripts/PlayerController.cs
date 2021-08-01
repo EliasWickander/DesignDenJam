@@ -22,6 +22,7 @@ public class PlayerController : MonoBehaviour
     public Image carriedItemImage;
 
     private AudioSource audioSource;
+    public Animator WalkingAnimator;
 
 
     private void Awake()
@@ -36,7 +37,11 @@ public class PlayerController : MonoBehaviour
     {
         if (GameManager.Instance.IsPaused)
             return;
-        
+
+       // Debug.Log(characterController.velocity.magnitude);
+
+        WalkingAnim();
+
         HandleMovement();
         HandleRotation();
 
@@ -61,6 +66,17 @@ public class PlayerController : MonoBehaviour
         audioSource.Play();
     }
 
+    private void WalkingAnim ()
+    {
+       if (characterController.velocity.magnitude <=1.5f)
+        {
+            WalkingAnimator.SetBool("IsWalking", false);
+        }
+        else
+        {
+            WalkingAnimator.SetBool("IsWalking", true);
+        }
+    }
 
     public void HandleIngredientPickup()
     {
