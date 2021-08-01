@@ -3429,7 +3429,7 @@ PrefabInstance:
       objectReference: {fileID: 686681549}
     - target: {fileID: 6418509563155751002, guid: 854d189ec1dc1d849b5c5cfd8f6a6c2c, type: 3}
       propertyPath: spawnEverySeconds
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 854d189ec1dc1d849b5c5cfd8f6a6c2c, type: 3}
@@ -3898,6 +3898,18 @@ PrefabInstance:
     - target: {fileID: 269641206312506061, guid: c28f55710bbe3854591476353ac302b3, type: 3}
       propertyPath: m_Name
       value: Pot
+      objectReference: {fileID: 0}
+    - target: {fileID: 2470696959822623434, guid: c28f55710bbe3854591476353ac302b3, type: 3}
+      propertyPath: HPToDecrease
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2470696959822623434, guid: c28f55710bbe3854591476353ac302b3, type: 3}
+      propertyPath: decreaseHPEverySeconds
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2470696959822623434, guid: c28f55710bbe3854591476353ac302b3, type: 3}
+      propertyPath: giveRationsEverySeconds
+      value: 15
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c28f55710bbe3854591476353ac302b3, type: 3}
