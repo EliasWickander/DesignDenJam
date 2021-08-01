@@ -6,9 +6,10 @@ using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
+    public AudioClip pickUpSound;
     public float moveSpeed = 5;
     public float turnRate = 5;
-    public float pickUpRange = 10;
+    public float pickUpRadius = 10;
 
     private Ingredient carriedIngredient;
 
@@ -20,12 +21,15 @@ public class PlayerController : MonoBehaviour
 
     public Image carriedItemImage;
 
+    private AudioSource audioSource;
+
 
     private void Awake()
     {
         characterController = GetComponent<CharacterController>();
         collider = GetComponent<Collider>();
         ingredientSpawner = FindObjectOfType<IngredientSpawner>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     private void Update()
@@ -52,6 +56,9 @@ public class PlayerController : MonoBehaviour
         
         carriedItemImage.color = Color.white;
         carriedItemImage.sprite = carriedIngredient.ingredientIcon;
+
+        audioSource.clip = pickUpSound;
+        audioSource.Play();
     }
 
 
@@ -59,9 +66,7 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.E))
         {
-            Collider[] hits = Physics.OverlapBox(collider.bounds.center + transform.forward * pickUpRange * 0.5f,
-                new Vector3(collider.bounds.extents.x, collider.bounds.extents.y, pickUpRange * 0.5f), transform.rotation,
-                LayerMask.GetMask("Ingredient"));
+            Collider[] hits = Physics.OverlapSphere(collider.bounds.center, pickUpRadius, LayerMask.GetMask("Ingredient"));
 
             if (hits.Length > 0)
             {
@@ -92,14 +97,15 @@ public class PlayerController : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        //Gizmos.DrawCube(collider.bounds.center + transform.forward * pickUpRange * 0.5f, new Vector3(collider.bounds.extents.x, collider.bounds.extents.y, pickUpRange * 0.5f) * 2);
+        if (collider)
+        {
+            Gizmos.DrawWireSphere(collider.bounds.center, pickUpRadius);   
+        }
     }
 
     public void HandleCooking()
     {
-        Collider[] hits = Physics.OverlapBox(collider.bounds.center + transform.forward * pickUpRange * 0.5f,
-            new Vector3(collider.bounds.extents.x, collider.bounds.extents.y, pickUpRange * 0.5f), transform.rotation,
-            LayerMask.GetMask("Pot"));
+        Collider[] hits = Physics.OverlapSphere(collider.bounds.center, pickUpRadius, LayerMask.GetMask("Pot"));
 
         foreach (Collider hit in hits)
         {

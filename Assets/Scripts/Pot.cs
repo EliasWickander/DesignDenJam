@@ -25,7 +25,9 @@ public class Pot : MonoBehaviour
     public float Health { get; set; }
 
     public Dictionary<Ingredients, int> ingredientsInPot = new Dictionary<Ingredients, int>();
-    
+
+    public AudioClip putInPotSound;
+    public AudioClip rationSound;
     public int RationsServed { get; set; }
     
     public float maxHealth = 100;
@@ -45,7 +47,14 @@ public class Pot : MonoBehaviour
     public event Action OnRationsGiven;
 
     public BalanceScore currentBalanceScore;
-    
+
+    private AudioSource audioSource;
+
+
+    private void Awake()
+    {
+        audioSource = GetComponent<AudioSource>();
+    }
 
     private void Start()
     {
@@ -55,7 +64,7 @@ public class Pot : MonoBehaviour
         
         for (int i = 0; i < 3; i++)
         {
-            ingredientsInPot.Add((Ingredients)i, 0);
+            ingredientsInPot.Add((Ingredients)i, Random.Range(0, 2));
         }
     }
 
@@ -81,6 +90,9 @@ public class Pot : MonoBehaviour
 
         ingredientsInPot[ingredient.ingredientType] += 1;
 
+        audioSource.clip = putInPotSound;
+        audioSource.Play();
+        
         // foreach (KeyValuePair<Ingredients, int> pair in ingredientsInPot)
         // {
         //     Debug.Log(pair.Key + " " + pair.Value);
@@ -140,6 +152,9 @@ public class Pot : MonoBehaviour
                 }
             }
 
+            audioSource.clip = rationSound;
+            audioSource.Play();
+            
             RationsServed++;
             Debug.Log("Balance was " + currentBalanceScore + ". Took " + damage + " damage");
             
@@ -190,17 +205,19 @@ public class Pot : MonoBehaviour
         foreach (KeyValuePair<Ingredients, int> pair in ingredientsInPot)
         {
             int comparedAmount = pair.Value;
-
+            
             if (comparedAmount > amount)
             {
                 return BalanceAmount.TooLittle;
             }
-            else if (comparedAmount < amount)
-            {
-                return BalanceAmount.TooMuch;
-            }
+            // else if (comparedAmount < amount)
+            // {
+            //     return BalanceAmount.TooMuch;
+            // }
         }
 
         return BalanceAmount.Balanced;
     }
+    
+    
 }
