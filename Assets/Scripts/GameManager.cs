@@ -10,6 +10,8 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance { get; private set; }
 
     public PersistentData saveData;
+
+    public int rationAmountBeforeDifficultyIncrease = 2;
     
     [Header("How much faster in percentage will it go every difficulty increase")]
     public float airBombersSpawnRate = 25;
@@ -27,6 +29,7 @@ public class GameManager : MonoBehaviour
     
     public bool IsPaused { get; set; }
 
+    private int currentRationAmount = 0;
 
     private void Awake()
     {
@@ -37,7 +40,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        pot.OnRationsGiven += IncreaseDifficulty;
+        pot.OnRationsGiven += () => currentRationAmount++;
     }
 
     private void Update()
@@ -45,6 +48,12 @@ public class GameManager : MonoBehaviour
         if (Input.GetKeyDown(keyToPause))
         {
             SetOptionsMenuEnabled(!optionsPanel.activeSelf);
+        }
+
+        if (currentRationAmount == rationAmountBeforeDifficultyIncrease)
+        {
+            currentRationAmount = 0;
+            IncreaseDifficulty();
         }
     }
 
