@@ -25,7 +25,7 @@ public class AudioManager : MonoBehaviour
     [Range(0, 1)]
     public float voiceStartSound = 0.5f;
 
-    private AudioSource audioSource;
+    public AudioSource audioSource;
 
     public Dictionary<VolumeType, float> volumePerType = new Dictionary<VolumeType, float>();
 
@@ -39,7 +39,6 @@ public class AudioManager : MonoBehaviour
 
     private float originVolume;
 
-    private string nextScene;
     private bool transitioningScene = false;
 
     private void Awake()
@@ -53,8 +52,7 @@ public class AudioManager : MonoBehaviour
             DontDestroyOnLoad(this);
             Instance = this;
         }
-
-        nextScene = SceneManager.GetActiveScene().name;
+        
         audioSource = GetComponent<AudioSource>();
 
         for (int i = 0; i < 4; i++)
@@ -65,8 +63,6 @@ public class AudioManager : MonoBehaviour
 
     private void Start()
     {
-        LevelManager.Instance.OnSceneLoad += OnSceneChange;
-        
         SetVolume(VolumeType.Master, masterStartSound);
         SetVolume(VolumeType.Music, musicStartSound);
         SetVolume(VolumeType.SFX, sfxStartSound);
@@ -79,15 +75,6 @@ public class AudioManager : MonoBehaviour
 
     private void Update()
     {
-        if (transitioningScene)
-        {
-            if (nextScene == SceneManager.GetActiveScene().name)
-            {
-                transitioningScene = false;
-                LevelManager.Instance.OnSceneLoad += OnSceneChange;
-            }   
-        }
-
         HandleSoundTransition();
     }
     
@@ -153,15 +140,11 @@ public class AudioManager : MonoBehaviour
         originVolume = audioSource.volume;
     }
 
-    private void OnSceneChange(string sceneName)
+    public void ChangeToSceneSound(string sceneName)
     {
-        transitioningScene = true;
-        nextScene = sceneName;
-        ChangeToSceneSound(sceneName);
-    }
-
-    private void ChangeToSceneSound(string sceneName)
-    {
+        if (!audioSource.isPlaying)
+            audioSource.Play();
+        
         if (sceneName == "Main_Menu")
         {
             ChangeSound(mainMenuMusic);

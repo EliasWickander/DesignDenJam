@@ -20,6 +20,7 @@ public class GameManager : MonoBehaviour
     private AirBomberSpawner airBomberSpawner;
     private Pot pot;
 
+    public AudioClip loseSound;
     public KeyCode keyToPause = KeyCode.K;
     public GameObject gameOverPanel;
     public GameObject optionsPanel;
@@ -87,8 +88,15 @@ public class GameManager : MonoBehaviour
         
         rationServedText.text = String.Format("{00:00}", pot.RationsServed);
         highScoreText.text = String.Format("{00:00}", saveData.highScore);
+
         gameOverPanel.SetActive(true);
         
+        AudioSource gameOverAudioSource = gameOverPanel.GetComponent<AudioSource>();
+        gameOverAudioSource.clip = loseSound;
+        gameOverAudioSource.Play();
+        
+        AudioManager.Instance.audioSource.Stop();
+
     }
 
     public void IncreaseDifficulty()

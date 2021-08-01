@@ -19,10 +19,11 @@ public class LevelManager : MonoBehaviour
 
    public void LoadScene(string sceneName)
     {
+        AudioManager.Instance.ChangeToSceneSound(sceneName);
         OnSceneLoad?.Invoke(sceneName);
         SceneManager.LoadScene(sceneName);
     }
-    public void Quit()
+   public void Quit()
     {
         Application.Quit();
     }

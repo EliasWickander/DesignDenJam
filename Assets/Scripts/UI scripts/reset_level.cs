@@ -18,6 +18,7 @@ public class reset_level : MonoBehaviour
     }
     public void resetòevel()
     {
+        //AudioManager.Instance.audioSource.Play();
         SceneManager.LoadScene(1);
     }
 }
