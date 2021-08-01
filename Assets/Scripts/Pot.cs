@@ -41,9 +41,12 @@ public class Pot : MonoBehaviour
 
     public int minDeltaForPoorBalance = 1;
     public int minDeltaForHorribleBalance = 3;
+
+    public int amountRationsBeforeIngredientsConsumed = 2;
     
     private float decreaseTimer = 0;
     public float rationTimer = 0;
+
 
     public event Action OnRationsGiven;
 
@@ -66,7 +69,7 @@ public class Pot : MonoBehaviour
         for (int i = 0; i < 3; i++)
         {
             ingredientsInPot.Add((Ingredients)i, Random.Range(1, 2));
-            ingredientsRationsLeftUntilExpire.Add((Ingredients)i, 2);
+            ingredientsRationsLeftUntilExpire.Add((Ingredients)i, amountRationsBeforeIngredientsConsumed);
         }
     }
 
@@ -91,7 +94,7 @@ public class Pot : MonoBehaviour
         ingredient.Destroy();
 
         ingredientsInPot[ingredient.ingredientType] += 1;
-        ingredientsRationsLeftUntilExpire[ingredient.ingredientType] = 2;
+        ingredientsRationsLeftUntilExpire[ingredient.ingredientType] = amountRationsBeforeIngredientsConsumed;
 
         audioSource.clip = putInPotSound;
         audioSource.Play();
