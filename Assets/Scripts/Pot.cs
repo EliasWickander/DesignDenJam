@@ -45,13 +45,18 @@ public class Pot : MonoBehaviour
     public event Action OnRationsGiven;
 
     public BalanceScore currentBalanceScore;
-    
+
+    [Header("SFX")]
+    AudioSource au;
+    public AudioClip Soupsoound;
+
 
     private void Start()
     {
         Health = startHealth;
         decreaseTimer = decreaseHPEverySeconds;
         rationTimer = giveRationsEverySeconds;
+        au = GetComponent<AudioSource>();
         
         for (int i = 0; i < 3; i++)
         {
@@ -144,6 +149,7 @@ public class Pot : MonoBehaviour
             Debug.Log("Balance was " + currentBalanceScore + ". Took " + damage + " damage");
             
             OnRationsGiven?.Invoke();
+            drinkinsoup();
             Health = Mathf.Clamp(Health - damage, 0, maxHealth);
             //Give rations
             rationTimer = giveRationsEverySeconds;
@@ -202,5 +208,10 @@ public class Pot : MonoBehaviour
         }
 
         return BalanceAmount.Balanced;
+    }
+    public void drinkinsoup()
+    {
+        au.clip = Soupsoound;
+        au.Play();
     }
 }
