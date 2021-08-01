@@ -52,7 +52,7 @@ public class Pot : MonoBehaviour
 
     public event Action OnRationsGiven;
 
-    [HideInInspector]
+    
     public BalanceScore currentBalanceScore;
 
     private AudioSource audioSource;

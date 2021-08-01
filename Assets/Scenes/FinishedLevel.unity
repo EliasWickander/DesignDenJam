@@ -1303,6 +1303,12 @@ MonoBehaviour:
   POTHP: {fileID: 355253313}
   ratioquantity: {fileID: 1744175669}
   Rationslider: {fileID: 2018675524}
+  differentcolor:
+  - {r: 0, g: 0, b: 0, a: 0}
+  - {r: 1, g: 1, b: 1, a: 1}
+  - {r: 1, g: 0.9878479, b: 0, a: 1}
+  - {r: 0.6603774, g: 0.33813143, b: 0.08410467, a: 1}
+  rationsoup: {fileID: 1589186016}
 --- !u!1 &635399964
 GameObject:
   m_ObjectHideFlags: 0
