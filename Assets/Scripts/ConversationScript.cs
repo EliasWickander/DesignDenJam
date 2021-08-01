@@ -192,7 +192,7 @@ public class ConversationScript : MonoBehaviour
                         case Ingredients.Potato:
                         {
                             PlayRandomGrunt();
-                            return "It lacks some bite,and olive oil!"; 
+                            return "It lacks some bite, and olive oil!"; 
                         }
                     }
 
