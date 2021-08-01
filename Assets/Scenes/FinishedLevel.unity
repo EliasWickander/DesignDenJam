@@ -1805,6 +1805,7 @@ GameObject:
   - component: {fileID: 909580662}
   - component: {fileID: 909580661}
   - component: {fileID: 909580660}
+  - component: {fileID: 909580663}
   m_Layer: 5
   m_Name: retry button
   m_TagString: Untagged
@@ -1876,9 +1877,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 771981181}
-        m_TargetAssemblyTypeName: LevelManager, Assembly-CSharp
-        m_MethodName: loadthatgame
+      - m_Target: {fileID: 909580663}
+        m_TargetAssemblyTypeName: reset_level, Assembly-CSharp
+        m_MethodName: "reset\xF2evel"
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1926,6 +1927,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 909580658}
   m_CullTransparentMesh: 1
+--- !u!114 &909580663
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 909580658}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 438b30ff803685f4b941185e38645733, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &993056744
 GameObject:
   m_ObjectHideFlags: 0
@@ -3403,7 +3416,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6418509563155751002, guid: 854d189ec1dc1d849b5c5cfd8f6a6c2c, type: 3}
       propertyPath: enableSpawn
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6418509563155751002, guid: 854d189ec1dc1d849b5c5cfd8f6a6c2c, type: 3}
       propertyPath: groundCollider
@@ -3773,7 +3786,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2113861512}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.8284445, y: 2.01, z: -0.35}
+  m_LocalPosition: {x: 5.8284445, y: 0, z: -0.35}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 509001309}
