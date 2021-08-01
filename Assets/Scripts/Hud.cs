@@ -41,22 +41,22 @@ public class Hud: MonoBehaviour
         {
             case BalanceScore.Nothing:
                 {
-                    rationsoup.color = differentcolor[1];
+                    rationsoup.color = differentcolor[0];
                     break;
                 }
             case BalanceScore.Good:
                 {
-                    rationsoup.color = differentcolor[2];
+                    rationsoup.color = differentcolor[1];
                     break;
                 }
             case BalanceScore.Poor:
                 {
-                    rationsoup.color = differentcolor[3];
+                    rationsoup.color = differentcolor[2];
                     break;
                 }
             case BalanceScore.Horrible:
                 {
-                    rationsoup.color = differentcolor[4];
+                    rationsoup.color = differentcolor[3];
                     break;
                 }
         }

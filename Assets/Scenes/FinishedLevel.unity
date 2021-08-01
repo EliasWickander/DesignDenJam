@@ -1305,9 +1305,9 @@ MonoBehaviour:
   Rationslider: {fileID: 2018675524}
   differentcolor:
   - {r: 0, g: 0, b: 0, a: 0}
-  - {r: 1, g: 1, b: 1, a: 1}
+  - {r: 0.6179246, g: 1, b: 0.6237084, a: 1}
   - {r: 1, g: 0.9878479, b: 0, a: 1}
-  - {r: 0.6603774, g: 0.33813143, b: 0.08410467, a: 1}
+  - {r: 1, g: 0.44217688, b: 0, a: 1}
   rationsoup: {fileID: 1589186016}
 --- !u!1 &635399964
 GameObject:
@@ -4650,7 +4650,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2012804687}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -48.3, y: -1.03, z: -8.79}
+  m_LocalPosition: {x: -43.26, y: -1.03, z: -10.09}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2113861513}
