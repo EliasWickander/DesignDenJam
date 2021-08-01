@@ -36,7 +36,7 @@ public class Pot : MonoBehaviour
     public float HPToDecrease = 1;
     public float decreaseHPEverySeconds = 1;
 
-    public float giveRationsEverySeconds = 5;
+    public float giveRationsEverySeconds = 15;
 
     public int minDeltaForPoorBalance = 1;
     public int minDeltaForHorribleBalance = 3;

@@ -33,7 +33,7 @@ public class IngredientSpawner : MonoBehaviour
     {
         int amountSpawned = 0;
 
-        List<Transform> availableSpawnPoints = spawnPoints;
+        List<Transform> availableSpawnPoints = new List<Transform>(spawnPoints);
         
         //first make sure there is at least one of every ingredient out
         foreach (Ingredient ingredient in ingredientsList)

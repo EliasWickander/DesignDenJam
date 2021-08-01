@@ -5,15 +5,27 @@ using UnityEngine;
 
 public class Bomb : MonoBehaviour
 {
+    public AudioClip bombFallingSound;
+    public AudioClip explosionSound;
+    
     public float explosionRadius = 5;
     private MeshRenderer meshRenderer;
 
     private bool exploding = false;
     private float explodeTimer = 0;
 
+    private AudioSource audioSource;
+
     private void Awake()
     {
         meshRenderer = GetComponentInChildren<MeshRenderer>();
+        audioSource = GetComponent<AudioSource>();
+    }
+
+    private void Start()
+    {
+        audioSource.clip = bombFallingSound;
+        audioSource.Play();
     }
 
     private void Update()
@@ -39,6 +51,9 @@ public class Bomb : MonoBehaviour
 
         exploding = true;
         meshRenderer.enabled = false;
+
+        audioSource.clip = explosionSound;
+        audioSource.Play();
         
         if (hits.Length > 0)
         {

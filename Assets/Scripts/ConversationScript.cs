@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
+using Random = UnityEngine.Random;
 
 public enum CommentState
 {
@@ -12,6 +13,10 @@ public enum CommentState
 }
 public class ConversationScript : MonoBehaviour
 {
+    public List<AudioClip> badFoodGrunts = new List<AudioClip>();
+    public List<AudioClip> noFoodGrunts = new List<AudioClip>();
+    public List<AudioClip> goodFoodGrunts = new List<AudioClip>();
+    
     public GameObject visualObject;
 
     public CommentState whatToCommentOn;
@@ -27,11 +32,14 @@ public class ConversationScript : MonoBehaviour
     private string currentText = "";
 
     private float writeTimer = 0;
+
+    private AudioSource audioSource;
     
     private void Awake()
     {
         textObject = GetComponentInChildren<Text>();
         pot = FindObjectOfType<Pot>();
+        audioSource = GetComponent<AudioSource>();
         
         visualObject.SetActive(false);
     }
@@ -100,21 +108,29 @@ public class ConversationScript : MonoBehaviour
         {
             case BalanceScore.Nothing:
             {
+                audioSource.clip = noFoodGrunts[Random.Range(0, noFoodGrunts.Count)];
+                audioSource.Play();
+                
                 text = "Ehm... chef. There's nothing in the pot. Are you okay?";
                 break;
             }
             case BalanceScore.Good:
             {
+                audioSource.clip = goodFoodGrunts[Random.Range(0, goodFoodGrunts.Count)];
+                audioSource.Play();
+                
                 text = "This is some good shit solider";
                 break;
             }
             case BalanceScore.Poor:
             {
+                PlayRandomGrunt();
                 text = "Tastes better than in prison at the very least";
                 break;
             }
             case BalanceScore.Horrible:
             {
+                PlayRandomGrunt();
                 text = "ARE YOU TRYING TO POISON ME, MAGGOT?";
                 break;
             }
@@ -159,16 +175,19 @@ public class ConversationScript : MonoBehaviour
                     {
                         case Ingredients.Bread:
                         {
+                            PlayRandomGrunt();
                             return "CHEF! MORE BREAD!";
                             break;
                         }
                         case Ingredients.Gunpowder:
                         {
+                            PlayRandomGrunt();
                             return "The food doesn't pack much of a punch...";
                             break;
                         }
                         case Ingredients.Potato:
                         {
+                            PlayRandomGrunt();
                             return "It lacks some bite,and olive oil!";
                             break;
                         }
@@ -182,16 +201,19 @@ public class ConversationScript : MonoBehaviour
                     {
                         case Ingredients.Bread:
                         {
+                            PlayRandomGrunt();
                             return "I can barely taste the soup! Who made this abomination?";
                             break;
                         }
                         case Ingredients.Gunpowder:
                         {
+                            PlayRandomGrunt();
                             return "Too sandy!";
                             break;
                         }
                         case Ingredients.Potato:
                         {
+                            PlayRandomGrunt();
                             return "I have nothing against potatoes... but aren't you overdoing it?";
                             break;
                         }
@@ -204,13 +226,25 @@ public class ConversationScript : MonoBehaviour
 
         if (pot.currentBalanceScore == BalanceScore.Nothing)
         {
+            audioSource.clip = noFoodGrunts[Random.Range(0, noFoodGrunts.Count)];
+            audioSource.Play();
+            
             text = "Ehm... chef. There's nothing in the pot. Are you okay?";
         }
         else
         {
+            audioSource.clip = goodFoodGrunts[Random.Range(0, goodFoodGrunts.Count)];
+            audioSource.Play();
+            
             text = "This is some good shit soldier";
         }
 
         return text;
+    }
+
+    private void PlayRandomGrunt()
+    {
+        audioSource.clip = badFoodGrunts[Random.Range(0, badFoodGrunts.Count)];
+        audioSource.Play();
     }
 }

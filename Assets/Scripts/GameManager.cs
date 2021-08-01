@@ -19,6 +19,8 @@ public class GameManager : MonoBehaviour
     private Pot pot;
 
     public GameObject gameOverPanel;
+    public GameObject optionsPanel;
+    
     public Text highScoreText;
     public Text rationServedText;
     
@@ -36,8 +38,20 @@ public class GameManager : MonoBehaviour
     {
         pot.OnRationsGiven += IncreaseDifficulty;
     }
-    
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            SetOptionsMenuEnabled(true);
+        }
+    }
+
+    public void SetOptionsMenuEnabled(bool enabled)
+    {
+        IsPaused = enabled;
+        optionsPanel.SetActive(enabled);
+    }
     public void WinGame()
     {
         IsPaused = true;
